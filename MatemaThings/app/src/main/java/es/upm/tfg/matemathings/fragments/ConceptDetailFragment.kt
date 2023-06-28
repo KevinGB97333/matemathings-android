@@ -49,7 +49,8 @@ class ConceptDetailFragment : Fragment() {
 		videoSharedViewModel.reset()
 		videoSharedViewModel.getVideos(conceptId)
 		conceptsSharedViewModel.generateSuggestedList(conceptId, category)
-		//Revisar
+
+		//Mejora la experiencia al scrollear por los videos
 		binding.scrollViewDetail.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
 			if(scrollX != oldScrollX) {
 				binding.videosList.addOnItemTouchListener(object : RecyclerView.SimpleOnItemTouchListener() {
@@ -63,7 +64,7 @@ class ConceptDetailFragment : Fragment() {
 				})
 			}
 		}
-		//
+
 		return  binding.root
 	}
 
