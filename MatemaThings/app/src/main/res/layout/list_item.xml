@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="concept"
+            type="es.upm.tfg.matemathings.models.concept.ConceptContent" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/card_background"
+        android:elevation="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_title"
+                style="@style/CustomTextViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="10dp"
+                android:text="@{concept.title}"
+                tools:text="GatitoMichi" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:contentPadding="0dp">
+
+                <ImageView
+                    android:id="@+id/item_image_bg"
+                    imageUrlBlur="@{concept.image.url}"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/example_image" />
+
+                <ImageView
+                    android:id="@+id/item_image_view"
+                    imageUrl="@{concept.image.url}"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    tools:src="@drawable/example_image" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/authors_text"
+                style="@style/CustomTextViewAuthorsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{concept.authors}"
+                android:paddingEnd="8dp"
+                tools:text="@tools:sample/lorem"/>
+
+            <TextView
+                android:id="@+id/card_view_description"
+                style="@style/CustomTextViewSummaryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="@{concept.description}"
+                tools:text="@tools:sample/lorem/random" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/location_btn"
+                    style="@style/CustomSecondaryButton"
+                    location="@{concept.location}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/visit_now_title" />
+
+                <Button
+                    android:id="@+id/learn_more_btn"
+                    style="@style/CustomPrimaryButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/learn_more" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

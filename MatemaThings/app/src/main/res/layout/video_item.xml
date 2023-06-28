@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="videoViewModel"
+            type="es.upm.tfg.matemathings.viewmodels.VideoViewModel"/>
+        <variable
+            name="videoId"
+            type="String" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/fragment_background"
+        app:cardUseCompatPadding="true"
+        android:padding="6dp">
+        <RelativeLayout
+            android:id="@+id/loading_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/loading_bg"
+            android:elevation="8dp"
+            android:visibility="gone"
+            videoApiStatus="@{videoViewModel.videosGetStatus}"
+            tools:visibility="visible">
+            <ProgressBar
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:indeterminateTint="@color/grey_background"/>
+        </RelativeLayout>
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtube_player_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="-10dp"
+            android:paddingBottom="-10dp"
+            videoID="@{videoId}"
+            app:autoPlay="false"/>
+    </androidx.cardview.widget.CardView>
+
+</layout>

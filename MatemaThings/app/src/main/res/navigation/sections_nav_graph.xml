@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sections_nav_graph"
+    app:startDestination="@id/sectionsSlidePageFragment">
+    <fragment
+        android:id="@+id/sectionsSlidePageFragment"
+        android:name="es.upm.tfg.matemathings.fragments.SectionsSlidePageFragment"
+        android:label="fragment_sections_slide_page"
+        tools:layout="@layout/fragment_sections_slide_page" >
+        <action
+            android:id="@+id/action_sectionsSlidePageFragment_to_conceptDetailFragment"
+            app:destination="@id/conceptDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/conceptDetailFragment"
+        android:name="es.upm.tfg.matemathings.fragments.ConceptDetailFragment"
+        android:label="ConceptDetailFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue='""' />
+        <action
+            android:id="@+id/action_conceptDetailFragment_self"
+            app:destination="@id/conceptDetailFragment" />
+    </fragment>
+</navigation>

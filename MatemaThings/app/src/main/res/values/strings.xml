@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name" translatable="false">MatemaThings</string>
+    <string name="nature_section_title">Nature</string>
+    <string name="art_section_title">Art</string>
+    <string name="architecture_section_title">Architecture</string>
+    <string name="visit_now_title">Visit Now</string>
+    <string name="learn_more">Learn more</string>
+    <string name="suggested_concepts">You may also be interested in...</string>
+    <string name="related_videos">Related videos</string>
+    <string name="see_more">See more</string>
+    <string name="see_less">Less</string>
+</resources>

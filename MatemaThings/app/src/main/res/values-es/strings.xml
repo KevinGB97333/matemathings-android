@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nature_section_title">Naturaleza</string>
+    <string name="art_section_title">Arte</string>
+    <string name="architecture_section_title">Arquitectura</string>
+    <string name="visit_now_title">Visitar</string>
+    <string name="learn_more">Ver más</string>
+    <string name="suggested_concepts">También te podría interesar...</string>
+    <string name="related_videos">Vídeos relacionados</string>
+    <string name="see_more">Mostrar más</string>
+    <string name="see_less">Mostrar menos</string>
+</resources>

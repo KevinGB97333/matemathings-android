@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="videoViewModel"
+            type="es.upm.tfg.matemathings.viewmodels.VideoViewModel" />
+
+        <variable
+            name="conceptsViewModel"
+            type="es.upm.tfg.matemathings.viewmodels.ConceptsViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/detail_activity_background">
+
+        <RelativeLayout
+            android:id="@+id/loading_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/loading_bg"
+            android:elevation="8dp"
+            android:padding="10dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ProgressBar
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:indeterminateTint="@color/grey_background" />
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarSize="6dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    imageUrl="@{conceptsViewModel.conceptDetail.concept.image.url}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/example_image" />
+
+                <TextView
+                    style="@style/CustomTextViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{conceptsViewModel.conceptDetail.concept.title}"
+                    tools:text="GatitoMichi" />
+
+                <TextView
+                    android:id="@+id/authors_text"
+                    style="@style/CustomTextViewAuthorsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@{conceptsViewModel.conceptDetail.concept.authors}"
+                    tools:text="@tools:sample/lorem" />
+
+                <TextView
+                    style="@style/CustomTextViewDescriptionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:padding="8dp"
+                    android:text="@{conceptsViewModel.conceptDetail.concept.description}"
+                    tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/CustomTextViewSectionTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/related_videos" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/videos_list"
+                        style="@style/CustomRecyclerView"
+                        listVideos="@{videoViewModel.videoIds}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="1"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/video_item" />
+
+                    <TextView
+                        android:id="@+id/see_text"
+                        style="@style/CustomTextViewSubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:alpha="1.0"
+                        android:text="@string/see_more" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/suggested_concepts_title"
+                        style="@style/CustomTextViewSectionTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/suggested_concepts" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/suggested_concepts_list"
+                        style="@style/CustomRecyclerView"
+                        listConcepts="@{conceptsViewModel.suggestedConcepts}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="8dp"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/list_item" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+</layout>
