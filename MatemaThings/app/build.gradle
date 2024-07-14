@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'es.upm.tfg.matemathings'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "es.upm.tfg.matemathings"
         minSdk 26
-        targetSdk 33
+        targetSdk 34
         versionCode 1004
         versionName "1.0.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
