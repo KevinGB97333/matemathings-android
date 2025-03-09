@@ -12,8 +12,8 @@ android {
         applicationId "es.upm.tfg.matemathings"
         minSdk 26
         targetSdk 35
-        versionCode 1005
-        versionName "1.0.5"
+        versionCode 1006
+        versionName "1.0.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
