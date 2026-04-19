@@ -1,7 +1,6 @@
 package es.upm.tfg.matemathings.adapters
 
 import android.content.Intent
-import android.net.Uri
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -12,15 +11,15 @@ import androidx.databinding.BindingAdapter
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import coil.size.OriginalSize
 import coil.size.Precision
-import coil.transform.BlurTransformation
+import coil.size.Size
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import es.upm.tfg.matemathings.R
-import es.upm.tfg.matemathings.network.models.Video
+import es.upm.tfg.matemathings.coil.transformations.BlurTransformation
 import es.upm.tfg.matemathings.models.concept.Concept
+import es.upm.tfg.matemathings.network.models.Video
 import es.upm.tfg.matemathings.viewmodels.conceptsGetApiStatus
 import es.upm.tfg.matemathings.viewmodels.videosGetApiStatus
 
@@ -50,7 +49,7 @@ fun bindImage(imgView: ImageView, imgUrl : String?){
 			crossfade(true)
 			crossfade(400)
 			precision(Precision.EXACT)
-			size(OriginalSize)
+			size(Size.ORIGINAL)
 			placeholder(R.drawable.loading_animation)
 			error(R.drawable.baseline_broken_image_24)
 		}
@@ -65,7 +64,7 @@ fun bindImageBlur(imgView: ImageView, imgUrl : String?){
 			crossfade(400)
 			precision(Precision.EXACT)
 			transformations(
-				BlurTransformation(imgView.context, radius = 8F)
+				BlurTransformation(radius = 8)
 			)
 		}
 	}
@@ -78,7 +77,7 @@ fun bindConcepts(recyclerView: RecyclerView, data: List<Concept>?) {
 @BindingAdapter("location")
 fun bindLocation(button: Button, uri : String?) {
 	button.setOnClickListener {
-		val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+		val intent = Intent(Intent.ACTION_VIEW, uri?.toUri())
 		button.context.startActivity(intent)
 	}
 }
